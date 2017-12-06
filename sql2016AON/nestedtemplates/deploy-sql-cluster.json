@@ -29,7 +29,7 @@
             }
         },
         "adminPassword": {
-            "type": "securestring",
+            "type": "string",
             "minLength": 12,
             "metadata": {
                 "description": "Password for the Administrator account of the existing Active Directory Domain"
@@ -42,7 +42,7 @@
             }
         },
         "sqlServicePassword": {
-            "type": "securestring",
+            "type": "string",
             "minLength": 12,
             "metadata": {
                 "description": "Password to be used for the SQL Server service account"
