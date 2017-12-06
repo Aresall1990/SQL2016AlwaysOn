@@ -2,7 +2,7 @@
 
 Param(
     [string] [Parameter(Mandatory=$true)] $ResourceGroupLocation,
-    [string] $ResourceGroupName = 'sql2016AON',
+    [string] $ResourceGroupName = 'sql2016AON2',
     [switch] $UploadArtifacts,
     [string] $StorageAccountName,
     [string] $StorageContainerName = $ResourceGroupName.ToLowerInvariant() + '-stageartifacts',
@@ -88,6 +88,15 @@ if ($UploadArtifacts) {
             (New-AzureStorageContainerSASToken -Container $StorageContainerName -Context $StorageAccount.Context -Permission r -ExpiryTime (Get-Date).AddHours(4))
     }
 }
+
+
+$username = "lv-teamcity.kernel@eleks.com"
+ $password = "B?rW?atPEa"
+ $secstr = New-Object -TypeName System.Security.SecureString
+ $password.ToCharArray() | ForEach-Object {$secstr.AppendChar($_)}
+ $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $secstr
+
+  Login-AzureRmAccount -Credential $cred 
 
 # Create or update the resource group using the specified template file and template parameters file
 New-AzureRmResourceGroup -Name $ResourceGroupName -Location $ResourceGroupLocation -Verbose -Force

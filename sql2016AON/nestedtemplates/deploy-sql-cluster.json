@@ -55,7 +55,7 @@
             }
         },
         "existingSubnetNames": {
-            "type": "array",
+            "type": "string",
             "metadata": {
                 "description": "Name of the existing subnets in the existing VNET to which the SQL Server VMs should be deployed"
             }
@@ -132,8 +132,7 @@
         "sqlConfigFunction": "ConfigSQLAO.ps1\\ConfigSQLAO",
         "agName": "[concat(variables('vmNamePrefix'),'ag')]",
         "agListenerName": "[concat(variables('vmNamePrefix'),'agl')]",
-        "agEpName": "[concat(variables('vmNamePrefix'),'ha')]",
-        "zones": ["1","2","3"]
+        "agEpName": "[concat(variables('vmNamePrefix'),'ha')]"
     },
     "resources": [
         {
@@ -162,7 +161,7 @@
                         "properties": {
                             "privateIPAllocationMethod": "Dynamic",
                             "subnet": {
-                                "id": "[concat(parameters('nicVnetUri'),'/subnets/',parameters('existingSubnetNames')[mod(copyIndex(),length(variables('zones')))])]"
+                              "id": "[concat(parameters('nicVnetUri'),'/subnets/',parameters('existingSubnetNames'))]"
                             },
                             "primary": true
                         }
@@ -172,7 +171,7 @@
                         "properties": {
                             "privateIPAllocationMethod": "Dynamic",
                             "subnet": {
-                                "id": "[concat(parameters('nicVnetUri'),'/subnets/',parameters('existingSubnetNames')[mod(copyIndex(),length(variables('zones')))])]"
+                                "id": "[concat(parameters('nicVnetUri'),'/subnets/',parameters('existingSubnetNames'))]"
                             }
                         }
                     },
@@ -181,7 +180,7 @@
                         "properties": {
                             "privateIPAllocationMethod": "Dynamic",
                             "subnet": {
-                                "id": "[concat(parameters('nicVnetUri'),'/subnets/',parameters('existingSubnetNames')[mod(copyIndex(),length(variables('zones')))])]"
+                              "id": "[concat(parameters('nicVnetUri'),'/subnets/',parameters('existingSubnetNames'))]"
                             }
                         }
                     }
@@ -335,9 +334,6 @@
                     },
                     "imageVersion": {
                         "value": "[parameters('imageVersion')]"
-                    },
-                    "zones": {
-                        "value": "[take(skip(variables('zones'),mod(copyIndex(),length(variables('zones')))),1)]"
                     }
                 }
             }

@@ -8,7 +8,7 @@
 				"westeurope",
 				"eastus2"
 			],
-			"defaultValue": "westeurope",
+			"defaultValue": "eastus2",
 			"metadata": {
 				"description": "Location for the VM, only certain regions support zones during preview."
 			}
@@ -100,8 +100,8 @@
       }
     },
     "existingSubnetNames": {
-      "type": "array",
-      "defaultValue": ["sqlSubnet1","sqlSubnet2","sqlSubnet3"],
+      "type": "string",
+      "defaultValue": "sqlSubnet",
       "metadata": {
         "description": "Name of the existing subnets in the existing VNET to which the SQL Server VMs should be deployed"
       }
@@ -123,7 +123,7 @@
       "metadata": {
         "description": "Location of resources that the script is dependent on such as linked templates and DSC modules"
       },
-      "defaultValue": "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/sql-alwayson-md-mult-subnets-zones"
+      "defaultValue": "https://raw.githubusercontent.com/Aresall1990/DeploymentKernel/master/SQL2016AlwaysOn"
     },
     "_artifactsLocationSasToken": {
       "type": "securestring",

@@ -3,22 +3,22 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "namePrefix": {
-      "value": null
+      "value": "sqlauto"
     },
     "existingDomainName": {
-      "value": null
+      "value": "digagro.com"
     },
     "adminUsername": {
-      "value": null
+      "value": "kernel"
     },
     "sqlServiceAccount": {
-      "value": null
+      "value": "SQLPublisher"
     },
     "existingVirtualNetworkRGName": {
-      "value": null
+      "value": "AzureResourceGroupAutomation"
     },
     "existingVirtualNetworkName": {
-      "value": null
+      "value": "DigAgroVNet"
     }
   }
 }
