@@ -145,48 +145,48 @@
             },
             "kind": "Storage"
         },
-        {
-            "name": "[concat(variables('vmNamePrefix'), copyindex(), '-nic')]",
-            "type": "Microsoft.Network/networkInterfaces",
-			"location": "[parameters('location')]",
-            "apiVersion": "2017-06-01",
-            "copy": {
-                "name": "nicLoop",
-                "count": "[parameters('vmCount')]"
-            },
-            "properties": {
-                "ipConfigurations": [
-                    {
-                        "name": "ipconfig1",
-                        "properties": {
-                            "privateIPAllocationMethod": "Dynamic",
-                            "subnet": {
-                              "id": "[concat(parameters('nicVnetUri'),'/subnets/',parameters('existingSubnetNames'))]"
-                            },
-                            "primary": true
-                        }
-                    },
-                    {
-                        "name": "ipconfig2",
-                        "properties": {
-                            "privateIPAllocationMethod": "Dynamic",
-                            "subnet": {
-                                "id": "[concat(parameters('nicVnetUri'),'/subnets/',parameters('existingSubnetNames'))]"
-                            }
-                        }
-                    },
-                    {
-                        "name": "ipconfig3",
-                        "properties": {
-                            "privateIPAllocationMethod": "Dynamic",
-                            "subnet": {
-                              "id": "[concat(parameters('nicVnetUri'),'/subnets/',parameters('existingSubnetNames'))]"
-                            }
-                        }
-                    }
-                ]
-            }
+      {
+        "name": "[concat(variables('vmNamePrefix'), copyindex(), '-nic')]",
+        "type": "Microsoft.Network/networkInterfaces",
+        "location": "[parameters('location')]",
+        "apiVersion": "2016-03-30",
+        "copy": {
+          "name": "nicLoop",
+          "count": "[parameters('vmCount')]"
         },
+        "properties": {
+          "ipConfigurations": [
+            {
+              "name": "ipconfig1",
+              "properties": {
+                "privateIPAllocationMethod": "Dynamic",
+                "subnet": {
+                  "id": "[concat(parameters('nicVnetUri'),'/subnets/',parameters('existingSubnetNames'))]"
+                },
+                "primary": true
+              }
+            },
+            {
+              "name": "ipconfig2",
+              "properties": {
+                "privateIPAllocationMethod": "Dynamic",
+                "subnet": {
+                  "id": "[concat(parameters('nicVnetUri'),'/subnets/',parameters('existingSubnetNames'))]"
+                }
+              }
+            },
+            {
+              "name": "ipconfig3",
+              "properties": {
+                "privateIPAllocationMethod": "Dynamic",
+                "subnet": {
+                  "id": "[concat(parameters('nicVnetUri'),'/subnets/',parameters('existingSubnetNames'))]"
+                }
+              }
+            }
+          ]
+        }
+      },
         {
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2015-01-01",

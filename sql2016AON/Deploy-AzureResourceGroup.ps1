@@ -2,7 +2,7 @@
 
 Param(
     [string] $ResourceGroupLocation = 'west europe',
-    [string] $ResourceGroupName = 'sql2016AON2',
+    [string] $ResourceGroupName = 'sql2016AON',
     [switch] $UploadArtifacts,
     [string] $StorageAccountName,
     [string] $StorageContainerName = $ResourceGroupName.ToLowerInvariant() + '-stageartifacts',

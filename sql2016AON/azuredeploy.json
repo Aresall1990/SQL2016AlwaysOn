@@ -3,15 +3,15 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "location": {
-			"type": "string",
-			"allowedValues": [
-				"westeurope",
-				"eastus2"
-			],
-			"defaultValue": "eastus2",
-			"metadata": {
-				"description": "Location for the VM, only certain regions support zones during preview."
-			}
+      "type": "string",
+      "allowedValues": [
+        "westeurope",
+        "eastus2"
+      ],
+      "defaultValue": "westeurope",
+      "metadata": {
+        "description": "Location for the VM, only certain regions support zones during preview."
+      }
     },
     "namePrefix": {
       "type": "string",
