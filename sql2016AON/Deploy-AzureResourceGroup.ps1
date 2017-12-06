@@ -1,7 +1,7 @@
 #Requires -Version 3.0
 
 Param(
-    [string] [Parameter(Mandatory=$true)] $ResourceGroupLocation,
+    [string] $ResourceGroupLocation = 'west europe',
     [string] $ResourceGroupName = 'sql2016AON2',
     [switch] $UploadArtifacts,
     [string] $StorageAccountName,
@@ -90,13 +90,13 @@ if ($UploadArtifacts) {
 }
 
 
-$username = "lv-teamcity.kernel@eleks.com"
+ $username = "lv-teamcity.kernel@eleks.com"
  $password = "B?rW?atPEa"
  $secstr = New-Object -TypeName System.Security.SecureString
  $password.ToCharArray() | ForEach-Object {$secstr.AppendChar($_)}
  $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $secstr
 
-  Login-AzureRmAccount -Credential $cred 
+ Login-AzureRmAccount -Credential $cred 
 
 # Create or update the resource group using the specified template file and template parameters file
 New-AzureRmResourceGroup -Name $ResourceGroupName -Location $ResourceGroupLocation -Verbose -Force
