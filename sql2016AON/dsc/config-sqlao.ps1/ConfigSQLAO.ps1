@@ -89,6 +89,8 @@ configuration ConfigSQLAO
     
     WaitForSqlSetup
 
+    Change-SQLCollation
+
     Node localhost
     {
 
@@ -417,5 +419,27 @@ function Enable-CredSSPNTLM
     }
 
     Write-Verbose "DONE:Setting up CredSSP for NTLM"
+}
+
+ function Change-SQLCollation
+{
+
+        $CMD = 'C:\SQLServerFull\setup.exe'
+        $arg1 = '/QUIET'
+        $arg2 = '/ACTION=REBUILDDATABASE '
+        $arg3 = '/INSTANCENAME=MSSQLSERVER'
+        $arg4 = '/SQLSYSADMINACCOUNTS=kernel'
+        $arg5 = '/SAPWD=New_opportunity'
+        $arg6 = '/SQLCOLLATION=Cyrillic_General_CI_AI'
+        & $CMD $arg1 $arg2 $arg3 $arg4 $arg5 $arg6
+
+        if($?)
+        {
+            Write-Host "The SQL collation was successfuly changed"
+        }
+        else
+         {
+         Write-Host "The SQL collation was not chnaged. Failed"
+         }
 }
 
